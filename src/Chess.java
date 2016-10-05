@@ -11,12 +11,10 @@ public class Chess {
             int yr = (Math.max(x1, x2) == x1) ? y1 : y2;
             int xl = Math.min(x1, x2);
             int yl = (Math.min(x1, x2) == x1) ? y1 : y2;
-            if((xr-xl) > (yr-yl)) {
-                int yint1 = xr + yr;
-                int yint2 = -1*(xl + yl);
-                int yint = (int)(yint1+yint2)/2;
+            if((xr-xl) > Math.abs(yr-yl)) {
+                int yint = (yl+((xr-xl)/2)+((yr-yl)/2));
                 if(yint >= 0) {
-                    int xint = Math.abs((yr-yint) + xr);
+                    int xint = -1*Math.abs(yr-yint) + xr;
                     System.out.print(xint +" "+yint+" ");
                 }
             }
