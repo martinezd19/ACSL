@@ -11,13 +11,19 @@ public class Chess {
             int yr = (Math.max(x1, x2) == x1) ? y1 : y2;
             int xl = Math.min(x1, x2);
             int yl = (Math.min(x1, x2) == x1) ? y1 : y2;
-            if((xr-xl) > Math.abs(yr-yl)) {
-                int yint = (yl+((xr-xl)/2)+((yr-yl)/2));
-                if(yint >= 0) {
-                    int xint = -1*Math.abs(yr-yint) + xr;
-                    System.out.print(xint +" "+yint+" ");
-                }
+            //left point m=1, right point m=-1
+            int xint = ((yr+xr)-(yl-xl))/2;
+            int yint = xint + (yl-xl);
+            if(xint > 0 && yint > 0) {
+                System.out.print(xint + " " + yint + " ");
             }
+            //left point m=-1, right point m=1
+            xint = ((yl+xl)-(yr-xr))/2;
+            yint = xint + (yr-xr);
+            if(xint > 0 && yint > 0) {
+                System.out.print(xint + " " + yint + " ");
+            }
+            System.out.println("");
         }
     }
 }
