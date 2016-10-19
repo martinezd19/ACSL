@@ -8,7 +8,7 @@ public class detective {
             int lines = Integer.parseInt(in.nextLine());
             HashMap<String, String[]> map = new HashMap<>();
             HashMap<String, Boolean> mapVisited = new HashMap<>();
-            for(int x = 0; x < lines; x++) {
+            for(int x = 0; x < lines-1; x++) {
                 String[] names = in.nextLine().split(" ");
                 String[] suspects = {names[1], names[2]};
                 map.put(names[0], suspects);
@@ -32,6 +32,9 @@ public class detective {
             while(!queue.isEmpty()) {
                 witness = queue.poll();
                 suspects = map.get(witness);
+                if(suspects == null) {
+                    continue;
+                }
                 if(suspects[0].equals("James") || suspects[1].equals("James")) {
                     length = 0;
                     while(true) {
